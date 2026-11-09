@@ -219,7 +219,7 @@ Este script registra/ejecuta los deployments configurados para entrenamiento e i
 Desde la raíz del proyecto:
 
 ```powershell
-poetry run uvicorn infraestructure.api.main:app --host 0.0.0.0 --port 8000
+poetry run uvicorn infraestructure.api.main:app --port 8000
 ```
 
 Abrir documentación interactiva:
