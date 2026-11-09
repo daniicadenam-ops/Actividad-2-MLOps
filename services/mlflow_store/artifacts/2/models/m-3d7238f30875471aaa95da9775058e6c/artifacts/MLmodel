@@ -1,0 +1,48 @@
+artifact_path: mlflow-artifacts:/2/models/m-3d7238f30875471aaa95da9775058e6c/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
+    python_version: 3.13.14
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.1
+    skops_trusted_types: null
+is_signature_from_type_hint: false
+mlflow_version: 3.17.0
+model_id: m-3d7238f30875471aaa95da9775058e6c
+model_size_bytes: 120353
+model_uuid: m-3d7238f30875471aaa95da9775058e6c
+prompts: null
+run_id: d878b2922d974161be08ded19476c3ba
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  serving_input_path: serving_input_example.json
+  type: dataframe
+signature:
+  inputs: '[{"type": "long", "name": "LIMIT_BAL", "required": true}, {"type": "long",
+    "name": "AGE", "required": true}, {"type": "long", "name": "PAY_0", "required":
+    true}, {"type": "long", "name": "PAY_2", "required": true}, {"type": "long", "name":
+    "PAY_3", "required": true}, {"type": "long", "name": "PAY_4", "required": true},
+    {"type": "long", "name": "PAY_5", "required": true}, {"type": "long", "name":
+    "PAY_6", "required": true}, {"type": "long", "name": "BILL_AMT1", "required":
+    true}, {"type": "long", "name": "BILL_AMT2", "required": true}, {"type": "long",
+    "name": "BILL_AMT3", "required": true}, {"type": "long", "name": "BILL_AMT4",
+    "required": true}, {"type": "long", "name": "BILL_AMT5", "required": true}, {"type":
+    "long", "name": "BILL_AMT6", "required": true}, {"type": "long", "name": "PAY_AMT1",
+    "required": true}, {"type": "long", "name": "PAY_AMT2", "required": true}, {"type":
+    "long", "name": "PAY_AMT3", "required": true}, {"type": "long", "name": "PAY_AMT4",
+    "required": true}, {"type": "long", "name": "PAY_AMT5", "required": true}, {"type":
+    "long", "name": "PAY_AMT6", "required": true}, {"type": "long", "name": "EDUCATION",
+    "required": true}, {"type": "long", "name": "MARRIAGE", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-11-09 00:54:44.616553'

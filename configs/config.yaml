@@ -1,0 +1,90 @@
+
+# Configuración del proyecto MLOps.
+# Todo lo que puede cambiar (datos, modelo, MLflow) vive aquí, no en el código.
+
+datos:
+  ruta: "data/default of credit card clients.csv"
+  target: "default_payment_next_month"
+  id: "ID"
+
+division:
+  test_size: 0.2
+  random_state: 42
+
+# Conjuntos de features.
+# ALL: todas las variables predictoras, excluyendo ID y target.
+# CUSTOM: selección específica de variables.
+features:
+  - nombre: all
+    columnas: ALL
+
+  - nombre: custom
+    columnas:
+      - LIMIT_BAL
+      - AGE
+      - EDUCATION
+      - MARRIAGE
+      - PAY_0
+      - PAY_2
+      - PAY_3
+      - PAY_4
+      - PAY_5
+      - PAY_6
+      - BILL_AMT1
+      - BILL_AMT2
+      - BILL_AMT3
+      - BILL_AMT4
+      - BILL_AMT5
+      - BILL_AMT6
+      - PAY_AMT1
+      - PAY_AMT2
+      - PAY_AMT3
+      - PAY_AMT4
+      - PAY_AMT5
+      - PAY_AMT6
+
+# Modelos que el flow de entrenamiento compara.
+# Cada modelo se entrena con cada conjunto de features.
+# Un run por combinación modelo-features.
+
+candidatos:
+  - nombre_run: credit-logreg-c1
+    tipo: logistic_regression
+    parametros:
+      C: 1.0
+      max_iter: 1000
+      class_weight: balanced
+
+  - nombre_run: credit-logreg-c01
+    tipo: logistic_regression
+    parametros:
+      C: 0.1
+      max_iter: 1000
+      class_weight: balanced
+
+  - nombre_run: credit-random-forest
+    tipo: random_forest
+    parametros:
+      n_estimators: 200
+      max_depth: 12
+      min_samples_leaf: 100
+      class_weight: balanced
+      random_state: 42
+
+mlflow:
+  tracking_uri: http://localhost:5000
+  experimento: credit-default-training
+  nombre_run: credit-default-training
+
+metricas:
+  umbral: 0.5
+
+# Registro del modelo e inferencia.
+
+registro:
+  nombre_modelo: credit-default-model
+  umbral_auc: 0.75
+
+inferencia:
+  tamano_lote: 100
+  carpeta_salida: ../data
